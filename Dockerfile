@@ -1,5 +1,8 @@
-FROM python:3.7-alpine
-RUN apk --no-cache add git openssh-client g++ gcc musl-dev openblas-dev py-mysqldb mariadb-dev build-base
+FROM jjanzic/docker-python3-opencv
+
+RUN apt-get update \
+    && apt-get install -y libffi-dev git openssh-client \
+    && rm -rf /var/lib/apt/lists/*
 
 ENV NUMPY_VERSION 1.16.0
 ENV PANDAS_VERSION 0.24.0
